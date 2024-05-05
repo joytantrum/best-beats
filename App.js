@@ -1,20 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>TEST2</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+// App.js
+import * as React from 'react';
+import 'react-native-gesture-handler';
+
+
+import MainContainer from '/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/src/containers/MainContainer.js';
+
+function App() {
+  return <MainContainer />;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
