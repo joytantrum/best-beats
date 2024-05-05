@@ -66,10 +66,10 @@ const MainNavigator = () => {
 
     return (
         <Tab.Navigator screenOptions={screenOptions}>
-            <Tab.Screen name="Activity" component={ActivityScreen} />
-            <Tab.Screen name="Play" component={PlayScreen} />
-            <Tab.Screen name="Explore" component={ExploreStack} />
-            <Tab.Screen name="Profile" component={ProfileScreen} />
+            <Tab.Screen name="Activity" component={ActivityScreen} options={{ headerShown: false }} />
+            <Tab.Screen name="Play" component={PlayScreen} options={{ headerShown: false }} />
+            <Tab.Screen name="Explore" component={ExploreStack} options={{ headerShown: false }} />
+            <Tab.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
         </Tab.Navigator>
     );
 };
