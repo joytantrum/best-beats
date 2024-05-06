@@ -4,7 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import ComposeStatus from '/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/src/components/ComposeStatus.js';
 import StatusItem from '/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/src/components/StatusItem.js';
-
+import Header from '/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/src/components/Header.js';
 
 export default function ActivityScreen({ navigation }) {
     const [newTweet, setNewTweet] = useState('');
@@ -59,19 +59,12 @@ export default function ActivityScreen({ navigation }) {
 
     return (
         <LinearGradient colors={['#9E00FF', '#0E0017']} start={{ x: 0, y: 0 }} end={{ x: 0, y: 0.6 }} style={styles.gradient}>
-            <View style={styles.header}>
-                {/* Centered Logo */}
-                <View style={{ flex: 1, alignItems: 'center' }}>
-                    <Image source={require('/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/assets/logo.png')} style={styles.logo} />
-                </View>
-            </View>
-
+            <Header /> 
             <ComposeStatus
                 newTweet={newTweet}
                 setNewTweet={setNewTweet}
                 handlePostTweet={handlePostTweet}
             />
-
             <FlatList
                 data={tweets}
                 renderItem={renderItem}
@@ -85,17 +78,6 @@ export default function ActivityScreen({ navigation }) {
 const styles = StyleSheet.create({
     gradient: {
         flex: 1,
-    },
-    header: {
-        flexDirection: 'row',
-        paddingHorizontal: 20,
-        paddingTop: 10,
-        paddingBottom: 10,
-    },
-    logo: {
-        width: 60,
-        height: 30, // Adjust as per your logo aspect ratio
-        paddingBottom: 50,
     },
     list: {
         flex: 1,

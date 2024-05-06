@@ -7,6 +7,7 @@ import Button from '/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-be
 import { Audio } from 'expo-av';
 import { Video } from 'expo-av';
 import VideoPlayer from '/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/src/components/VideoPlayer.js';
+import Header from '/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/src/components/Header.js';
 
 export default function PlayScreen({ navigation }) {
     const [isPlaying, setIsPlaying] = useState(false);
@@ -85,10 +86,8 @@ export default function PlayScreen({ navigation }) {
     };
 
     return (
-        <LinearGradient
-            colors={['#9E00FF', '#0E0017']}
-            style={styles.gradient}
-        >
+        <LinearGradient colors={['#9E00FF', '#0E0017']} start={{ x: 0, y: 0 }} end={{ x: 0, y: 0.6 }} style={styles.gradient}>
+            <Header />
             <View style={styles.container}>
                 {/* Section for Currently Playing Song */}
                 <View style={styles.musicContainer}>
@@ -109,7 +108,7 @@ export default function PlayScreen({ navigation }) {
                 {/* Video Section */}
                 <View style={styles.videoContainer}>
                     <Video
-                        source={require('/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/assets/placeholder.mp4')} // Specify the path to your video file
+                        source={require('/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/assets/placeholder.mp4')}
                         shouldPlay={isPlaying}
                         resizeMode="cover"
                         style={styles.video}
@@ -131,7 +130,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'top',
+        marginVertical: 50, 
     },
     musicContainer: {
         backgroundColor: 'rgba(39, 38, 64, 0.2)',

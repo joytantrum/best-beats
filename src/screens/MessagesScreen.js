@@ -3,6 +3,8 @@ import { View, FlatList, StyleSheet, Image, Text, TouchableOpacity } from 'react
 import { LinearGradient } from 'expo-linear-gradient';
 import Button from '/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/src/components/Button.js';
 import MessageItem from '/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/src/components/MessageItem.js';
+import Header from '/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/src/components/Header.js';
+
 
 const MessagesScreen = ({ navigation }) => {
     const messages = [
@@ -39,12 +41,9 @@ const MessagesScreen = ({ navigation }) => {
 
     return (
         <LinearGradient
-            colors={['#9E00FF', '#0E0017']}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 0, y: 0.6 }}
-            style={styles.gradient}
-        >
+            colors={['#9E00FF', '#0E0017']} start={{ x: 0, y: 0 }} end={{ x: 0, y: 0.6 }} style={styles.gradient}>
             <View style={styles.container}>
+            <Header />
                 <View style={styles.headerContainer}>
                     <Button size="medium" backgroundColor="rgba(255, 255, 255, 0.2)" onPress={handleLikesPress}>
                         <Text style={styles.headerButtonText}>Likes</Text>
@@ -68,20 +67,17 @@ const MessagesScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
     gradient: {
         flex: 1,
-        alignItems: 'center',
         justifyContent: 'center',
     },
     container: {
         flex: 1,
         width: '100%',
-        paddingHorizontal: 20,
     },
     headerContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: 80,
-        paddingTop: 50,
-        paddingBottom: 50,
+        paddingBottom: 20,
     },
     list: {
         flex: 1,

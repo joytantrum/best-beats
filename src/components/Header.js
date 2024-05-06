@@ -1,34 +1,28 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 
 const Header = () => {
     return (
-        <View style={styles.container}>
-            <Image
-                style={styles.logo}
-                source={require('/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/assets/logo.png')}
-            />
-            <Text style={styles.title}>BEST BEATS</Text>
+        <View style={styles.header}>
+            {/* Centered Logo */}
+            <View style={{ flex: 1, alignItems: 'center' }}>
+                <Image source={require('/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/assets/logo.png')} style={styles.logo} />
+            </View>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingHorizontal: 16,
-        height: 50,
-        backgroundColor: '#333333',
+    header: {
+        paddingHorizontal: 20,
+        paddingTop: 60,
+        paddingBottom: 60,
+        alignItems: 'center', 
     },
     logo: {
-        width: 30,
-        height: 30,
-        marginRight: 8,
-    },
-    title: {
-        fontSize: 18,
-        color: 'white',
+        width: 50,
+        height: 50,
+        paddingBottom: 50,
     },
 });
 

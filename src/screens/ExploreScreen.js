@@ -3,6 +3,7 @@ import { View, FlatList, StyleSheet, Image, Text, TouchableOpacity } from 'react
 import { LinearGradient } from 'expo-linear-gradient';
 import ActivityItem from '/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/src/components/ActivityItem.js';
 import Button from '/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/src/components/Button.js';
+import Header from '/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/src/components/Header.js';
 
 const ExploreScreen = ({ navigation }) => {
     const likes = [
@@ -34,12 +35,8 @@ const ExploreScreen = ({ navigation }) => {
     };
 
     return (
-        <LinearGradient
-            colors={['#9E00FF', '#0E0017']}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 0, y: 0.6 }}
-            style={styles.gradient}
-        >
+        <LinearGradient colors={['#9E00FF', '#0E0017']} start={{ x: 0, y: 0 }} end={{ x: 0, y: 0.6 }} style={styles.gradient}>
+            <Header />
             <View style={styles.headerContainer}>
                 <Button size="medium" backgroundColor="rgba(255, 255, 255, 0.2)" onPress={handleLikesPress}>
                     <Text style={styles.headerButtonText}>Likes</Text>
@@ -61,15 +58,13 @@ const ExploreScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
     gradient: {
         flex: 1,
-        alignItems: 'center',
         justifyContent: 'center',
     },
     headerContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        paddingHorizontal: 20,
-        paddingTop: 50,
-        paddingBottom: 50,
+        paddingHorizontal: 80,
+        paddingBottom: 20,
     },
     likeContainer: {
         flexDirection: 'row',
@@ -81,7 +76,7 @@ const styles = StyleSheet.create({
     },
     likeContent: {
         flex: 1,
-        marginLeft: 10, // Add spacing between profile picture and content
+        marginLeft: 10, 
     },
     profilePicture: {
         width: 40,
@@ -101,8 +96,8 @@ const styles = StyleSheet.create({
         color: '#fff',
     },
     interactionContainer: {
-        flexDirection: 'row', // Ensure row layout for icon and text
-        alignItems: 'center', // Center items vertically within the row
+        flexDirection: 'row', 
+        alignItems: 'center', 
     },
     interactionRow: {
         flexDirection: 'row', // Row layout for icon and text

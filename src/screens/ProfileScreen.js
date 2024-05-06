@@ -3,6 +3,7 @@ import { View, StyleSheet, Image, FlatList } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import CustomText from '/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/src/components/CustomText.js';
 import Playlists from '/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/src/components/Playlists.js';
+import Header from '/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/src/components/Header.js';
 
 export default function ProfileScreen({ navigation, route }) {
     //const { userData } = route.params; // Extracting user data from route params
@@ -22,16 +23,15 @@ export default function ProfileScreen({ navigation, route }) {
 
 
     return (
+    
         <LinearGradient
-            colors={['#9E00FF', '#0E0017']}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 0, y: 0.6 }}
-            style={styles.gradient}
-        >
+            colors={['#9E00FF', '#0E0017']} start={{ x: 0, y: 0 }} end={{ x: 0, y: 0.6 }} style={styles.gradient}>
+            <Header />    
             <View style={styles.container}>
-
                 {/* Middle Section */}
+
                 <View style={styles.main}>
+                    
                     <View style={styles.imageContainer}>
                         <Image style={styles.image} source={require("/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/assets/PFP.png")} />
                         <CustomText style={styles.displayName} color="white" weight="bold">{"userData.display_name"}</CustomText>
@@ -86,14 +86,12 @@ const styles = StyleSheet.create({
     container: {
         width: '100%',
         flex: 1,
-        alignItems: 'flex-start', // Align content to the start (top) of the container
-        justifyContent: 'flex-start', // Align content to the start (top) of the container
-        paddingTop: 30, // Add padding to further move content up
+        alignItems: 'flex-start', 
+        justifyContent: 'flex-start',
     },
     gradient: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
+       justifyContent: 'center',
     },
     main: {
         marginTop: 0,
@@ -104,11 +102,11 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     image: {
-        marginTop: 50, // Top of top section 
-        width: 130,
-        height: 130,
-        borderRadius: 90,   // Circle radius 
-        marginBottom: 30,
+        width: 100,
+        height: 100,
+        borderRadius: 50,   // Circle radius 
+        marginTop: 20,
+        marginBottom: 20,
     },
     displayName: {
         fontSize: 16,
@@ -152,7 +150,6 @@ const styles = StyleSheet.create({
     flatListContainer: {
         flex: 1,
         width: '100%',
-        paddingHorizontal: 20, // Add horizontal padding
     },
 });
 
