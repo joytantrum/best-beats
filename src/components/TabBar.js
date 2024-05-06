@@ -8,6 +8,7 @@ import ActivityScreen from '/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS
 import PlayScreen from '/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/src/screens/PlayScreen.js';
 import ExploreScreen from '/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/src/screens/ExploreScreen.js';
 import ProfileScreen from '/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/src/screens/ProfileScreen.js';
+import MessagesScreen from '/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/src/screens/MessagesScreen.js';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -16,6 +17,7 @@ const ExploreStack = () => {
     return (
         <Stack.Navigator>
             <Stack.Screen name="ExploreHome" component={ExploreScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="Messages" component={MessagesScreen} options={{ headerShown: false }} />
            
             {/* Add more screens for ExploreStack as needed */}
         </Stack.Navigator>

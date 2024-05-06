@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { View, FlatList, StyleSheet, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Ionicons } from '@expo/vector-icons';
-import Icon from 'react-native-vector-icons/Ionicons';
 
 import ComposeStatus from '/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/src/components/ComposeStatus.js';
 import StatusItem from '/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/src/components/StatusItem.js';
