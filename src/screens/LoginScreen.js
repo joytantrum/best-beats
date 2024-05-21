@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+
+// LoginScreen.js
+
+import React, { useState, useEffect } from 'react';
 import { ScrollView, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
@@ -7,7 +10,6 @@ import { LinearGradient } from 'expo-linear-gradient';
 // Authorization 
 import { authorize } from 'react-native-app-auth';
 import { ResponseType, useAuthRequest } from 'expo-auth-session';
-import { loginEndpoint } from '/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/src/actions/Authorization.js';
 
 const LoginScreen = ({ setIsAuthenticated, navigation }) => {
     const [email, onChangeEmail] = useState('');
@@ -39,7 +41,7 @@ const LoginScreen = ({ setIsAuthenticated, navigation }) => {
             });
             const userData = await response.json();
             console.log('User Data:', userData); // Log user data
-            //setUserData(userData); // Set user data in state
+            setUserData(userData); // Set user data in state
         } catch (error) {
             console.error('Error fetching user data:', error);
             throw error;
@@ -66,13 +68,21 @@ const LoginScreen = ({ setIsAuthenticated, navigation }) => {
             const { access_token } = response.params;
             console.log('Spotify Sign In Result:', access_token);
             // Use the access_token to fetch user data
-            fetchUserData(access_token);
-            setIsAuthenticated(true);
-            navigation.navigate('Explore');
-            //navigation.navigate('Profile', { userData: userData }); // Navigate to ProfileScreen with userData
+            fetchUserData(access_token)
+                .then(userData => {
+                    setIsAuthenticated(true);
+                    // Navigate to Explore first
+                    navigation.navigate('Explore');
+                    // Navigate to Profile with userData
+                    navigation.navigate('Profile', { userData: userData });
+                })
+                .catch(error => {
+                    console.error('Error fetching user data:', error);
+                });
         }
-    },
-        [response]);
+    }, [response]);
+
+
 
     return (
         <LinearGradient

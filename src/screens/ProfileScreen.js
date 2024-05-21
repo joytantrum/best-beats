@@ -7,6 +7,10 @@ import Header from '/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-be
 
 export default function ProfileScreen({ navigation, route }) {
     //const { userData } = route.params; // Extracting user data from route params
+    const { userData } = route.params || {}; // Ensure to handle the case when route.params is undefined
+    // Accessing email and display name from userData
+    const email = userData ? userData.email : 'Unknown';
+    const displayName = userData ? userData.display_name : 'Unknown';
     // Dummy data for the FlatList
     const playlistsData = [
         { id: 1, name: 'Playlist 1', description: 'Description 1' },
@@ -23,7 +27,6 @@ export default function ProfileScreen({ navigation, route }) {
 
 
     return (
-    
         <LinearGradient
             colors={['#9E00FF', '#0E0017']} start={{ x: 0, y: 0 }} end={{ x: 0, y: 0.6 }} style={styles.gradient}>
             <Header />    
@@ -34,24 +37,24 @@ export default function ProfileScreen({ navigation, route }) {
                     
                     <View style={styles.imageContainer}>
                         <Image style={styles.image} source={require("/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/assets/PFP.png")} />
-                        <CustomText style={styles.displayName} color="white" weight="bold">{"userData.display_name"}</CustomText>
-                        <CustomText style={styles.email} color="gray">{"userData.email"}</CustomText>
+                        <CustomText style={styles.displayName} color="white" weight="bold">{displayName}</CustomText>
+                        <CustomText style={styles.email} color="gray">{email}</CustomText>
                     </View>
 
                     <View style={styles.middleSectionTextContainer}>
 
                         <View style={styles.middleSectionText}>
-                            <CustomText style={styles.bottomtext} color="white">18</CustomText>
+                            <CustomText style={styles.bottomtext} color="white">{18}</CustomText>
                             <CustomText style={styles.toptext} color="white">Following</CustomText>
                         </View>
 
                         <View style={styles.middleSectionText}>
-                            <CustomText style={styles.bottomtext} color="white">73</CustomText>
+                            <CustomText style={styles.bottomtext} color="white">{73}</CustomText>
                             <CustomText style={styles.toptext} color="white">Followers</CustomText>
                         </View>
 
                         <View style={styles.middleSectionText}>
-                            <CustomText style={styles.bottomtext} color="white">28</CustomText>
+                            <CustomText style={styles.bottomtext} color="white">{28}</CustomText>
                             <CustomText style={styles.toptext} color="white">Playlists</CustomText>
                         </View>
 
