@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
+    "@react-native-async-storage/async-storage": "1.18.2",
     "@react-native-community/audio-toolkit": "^2.0.3",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/bottom-tabs": "^6.5.20",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/stack": "^6.3.29",
+    "axios": "^1.7.2",
     "expo": "^49.0.23",
     "expo-auth-session": "~5.0.2",
     "expo-av": "~13.4.1",

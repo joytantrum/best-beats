@@ -1,21 +1,17 @@
 
-import { authorize } from 'react-native-app-auth';
-import { ResponseType, useAuthRequest } from 'expo-auth-session';
+import axios from 'axios';
 
-const fetchUserData = async (accessToken) => {
+// Function to fetch user's playlists
+export const fetchUserPlaylists = async (accessToken) => {
     try {
-        const response = await fetch('https://api.spotify.com/v1/me', {
+        const response = await axios.get('https://api.spotify.com/v1/me/playlists', {
             headers: {
                 Authorization: `Bearer ${accessToken}`,
             },
         });
-        const userData = await response.json();
-        console.log('User Data:', userData); // Log user data
-        //setUserData(userData); // Set user data in state
+        return response.data;
     } catch (error) {
-        console.error('Error fetching user data:', error);
-        throw error;
+        console.error('Error fetching user playlists:', error.response?.data || error.message);
+        return null;
     }
 };
-
-//export default fetchUserData;

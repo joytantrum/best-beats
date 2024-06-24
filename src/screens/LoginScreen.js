@@ -1,21 +1,22 @@
 
-// LoginScreen.js
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { ScrollView, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 
-// Authorization 
-import { authorize } from 'react-native-app-auth';
-import { ResponseType, useAuthRequest } from 'expo-auth-session';
+// Authorization
+import { useAuthRequest } from 'expo-auth-session';
+
+// Import UserContext for storing userData
+import { UserContext } from '/Users/lindsayclifford/Desktop/REACT-APPS/BEST-BEATS/best-beats/src/context/userContext.js';
 
 const LoginScreen = ({ setIsAuthenticated, navigation }) => {
     const [email, onChangeEmail] = useState('');
-    const [password, onChangePassword] = useState();
-    const [userData, setUserData] = useState(null); // State to hold user data
+    const [password, onChangePassword] = useState('');
 
+    // Use the UserContext to access setUserData
+    const { setUserData } = useContext(UserContext);
 
     // Spotify OAuth configuration
     const [request, response, promptAsync] = useAuthRequest(
@@ -32,7 +33,7 @@ const LoginScreen = ({ setIsAuthenticated, navigation }) => {
     );
 
     // Function to fetch user data using access token
-    const fetchUserData = async (accessToken) => {
+        const fetchUserData = async (accessToken) => {
         try {
             const response = await fetch('https://api.spotify.com/v1/me', {
                 headers: {
@@ -40,8 +41,9 @@ const LoginScreen = ({ setIsAuthenticated, navigation }) => {
                 },
             });
             const userData = await response.json();
-            console.log('User Data:', userData); // Log user data
-            setUserData(userData); // Set user data in state
+            console.log('User Data:', userData);
+            setUserData(userData);
+            return userData;  // Return the fetched user data
         } catch (error) {
             console.error('Error fetching user data:', error);
             throw error;
@@ -57,32 +59,26 @@ const LoginScreen = ({ setIsAuthenticated, navigation }) => {
         }
     };
 
+    // Start the authorization flow
     const handleSpotifySignIn = async () => {
-        // Start the authorization flow
         promptAsync();
     };
 
-    // Handle the response from the authorization flow
-    React.useEffect(() => {
+    // Handle the response from the authorization flow & store the data 
+    useEffect(() => {
         if (response?.type === 'success') {
             const { access_token } = response.params;
             console.log('Spotify Sign In Result:', access_token);
-            // Use the access_token to fetch user data
             fetchUserData(access_token)
                 .then(userData => {
                     setIsAuthenticated(true);
-                    // Navigate to Explore first
-                    navigation.navigate('Explore');
-                    // Navigate to Profile with userData
-                    navigation.navigate('Profile', { userData: userData });
+                    navigation.navigate('Profile', { userData });
                 })
                 .catch(error => {
                     console.error('Error fetching user data:', error);
                 });
         }
     }, [response]);
-
-
 
     return (
         <LinearGradient
@@ -127,9 +123,6 @@ const LoginScreen = ({ setIsAuthenticated, navigation }) => {
                 >
                     <Text style={styles.signInButtonText}>Sign In with Spotify</Text>
                 </TouchableOpacity>
-
-
-
             </ScrollView>
         </LinearGradient>
     );
@@ -168,7 +161,6 @@ const styles = StyleSheet.create({
         borderWidth: 0.8,
     },
     signInButton: {
-        //backgroundColor: "transparent",
         backgroundColor: 'rgba(255, 255, 255, 0.2)',
         padding: 10,
         marginLeft: "auto",
@@ -184,7 +176,6 @@ const styles = StyleSheet.create({
         borderWidth: 0.8
     },
     signInSpotifyButton: {
-        //backgroundColor: "transparent",
         backgroundColor: "#1DB954",
         padding: 10,
         marginLeft: "auto",
