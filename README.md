@@ -6,6 +6,10 @@ music sharing IOS application that utilizes the spotify API to allow users to in
 
 <https://www.figma.com/design/5dJEKqz0xlttJWyFkUflO3/Spotify-(React.JS)?node-id=0%3A1&t=a59cv5DPAnyVt7wX-1>
 
+# Demo 07/27/24
+
+https://github.com/user-attachments/assets/670e54d2-b230-43bf-b611-fe7ccefb5ea2
+
 ## Features
 
 - spotify integration: seamlessly link your spotify account to share your favorite songs, playlists, and statuses.
